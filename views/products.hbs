@@ -1,0 +1,53 @@
+<h1 class="text-center page-title">Продукты</h1>
+<div class="container d-flex" id="products">
+    <div class="category">
+        <ul>
+        {{#each categories}}
+            <li>
+                <a href="#" data-cat="{{name}}">{{name}}</a>
+                <ul>
+                    {{#each categories}}
+                        <li><a href="#" data-cat="{{this}}">&nbsp;-&nbsp;{{this}}</a></li>
+                    {{/each}}
+                </ul>
+            </li>
+        {{/each}}
+        </ul>
+        <button id="filter" class="btn btn-success">Применить</button>
+    </div>
+    <div class="products">
+        {{#if products.length}}
+            {{#each products}}
+                <strong class="products-id">{{_id}}</strong>
+                <div class="products-product">
+                    <div class="products-left">
+                        <div class="product-image">
+                            <img src="{{image}}" alt="{{title}}">
+                        </div>
+                    </div>
+                    <div class="products-right">
+                        <div class="product-title">
+                            <a href="/products/{{_id}}">{{title}}</a>
+                        </div>
+                        <div class="product-description">{{description}}</div>
+                        <div class="product-all-category">
+                            {{#each @root.categories}}
+                                <span class="product-cat">{{categories}}</span>
+                            {{/each}}
+                        </div>
+                    </div>
+                    <div class="product-price">
+                        <span class="price">{{price}}</span>
+                        <span>руб.</span>
+                    </div>
+                    <form action="/card/add" method="POST" class="product-price-form">
+                        <input type="hidden" value="{{_id}}" name="id">
+                        <button type="submit" class="btn btn-success">Купить</button>
+                    </form>
+                </div>
+            {{/each}}
+        {{else}}
+            Товаров на складе нет!
+        {{/if}}
+    </div>
+</div>

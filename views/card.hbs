@@ -1,0 +1,34 @@
+<div class="container">
+    <h1>Корзина</h1>
+    <div class="cart">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Count</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            {{#each items}}
+                <tbody>
+                    <tr>
+                        <td>{{this.count}}</td>
+                        <td>
+                            <img class="cart-img" src="{{this.productId.image}}" alt="{{this.productId.title}}">
+                        </td>
+                        <td>{{this.productId.title}}</td>
+                        <td>{{this.productId.description}}</td>
+                        <td class="price">{{this.productId.price}}</td>
+                    </tr>
+                </tbody>
+            {{/each}}
+        </table>
+        <div class="cart-total-w">
+            <span>Итого:&nbsp;</span>
+            <span class="cart-total">{{total}}</span>
+            <span>Руб.</span>
+        </div>
+    </div>
+</div>

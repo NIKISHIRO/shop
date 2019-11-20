@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="add-product">
+        <h1 class="text-center">Добавить новый продукт:</h1>
+        <form action="/products/add" method="POST">
+            <div><strong>Title:</strong></div>
+            <input type="text" name="title" placeholder="Title" id="product-title">
+            <div><strong>Description:</strong></div>
+            <textarea class="products-description" type="text" name="description" placeholder="Description"></textarea>
+            <div><strong>Image url:</strong></div>
+            <input type="text" name="image" placeholder="Image url" id="product-image">
+            <div><strong>Price:</strong></div>
+            <input type="text" name="price" placeholder="Price" id="product-price">
+
+            <div class="category-list">
+                <div class="category-list__all">
+                    <ul>
+                    {{#each category}}
+                        <li>
+                            <a href="#" data-id="{{_id}}">{{name}}</a>
+                            <ul>
+                                {{#each categories}}
+                                    <li><a href="#">{{this}}</a></li>
+                                {{/each}}
+                            </ul>
+                        </li>
+                    {{/each}}
+                    </ul>
+                    
+                </div>
+            </div>
+            <input type="hidden" id="cat-list" name="categories">
+            <button type="submit" id="product-submit">Добавить</button>
+        </form>
+    </div>
+</div>

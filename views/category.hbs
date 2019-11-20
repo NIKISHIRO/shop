@@ -1,0 +1,44 @@
+<h1 class="text-center">Добавить категорию</h1>
+
+<div class="container">
+    <div class="categories">
+        <strong>Добавить категорию</strong>
+        <form action="/category" method="POST">
+            <div class="title">Название категории:</div>
+            <div><input type="text" name="name" placeholder="Категория" class="form-control categories-general-input"></div>
+            <div><textarea name="categories" placeholder="Подкатегории через ','" class="form-control"></textarea></div>
+            <div><button class="btn btn-success">Добавить</button></div>
+        </form>
+        <div class="title">Вся текущая структура категорий:</div>
+        <div class="categories-container">
+            {{#if category.length}}
+                {{#each category}}
+                    <div class="categories-cat">
+                        <a href="#" class="categories-cat__title-link">{{name}}</a>
+                        <div class="categories-cat__change">
+                            <input type="text" value="{{name}}" class="form-control categories-cat__general">
+                            <div class="categories-save" data-id="{{_id}}">
+                                <a href="#" class="text-success"><span class="fi-check"></span></a>
+                            </div>
+                            <div class="categories-cat__one">
+                                <div class="categories-cat__separates">
+                                {{#each categories}}
+                                    <div class="categories-cat__separate">
+                                        <span class="categories-cat__separate-icon text-primary">
+                                            <span class="fi-minus"></span>
+                                        </span>
+                                        <input type="text" value="{{this}}" class="form-control categories-cat__separate-input">
+                                    </div>
+                                {{/each}}
+                                </div>
+                                <a href="#" class="categories-cat__separate-add text-primary"><span class="fi-plus"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            {{else}}
+                <div>На данный момент не создано ни одной категории.</div><br>
+            {{/if}}
+        </div>
+    </div>
+</div>
